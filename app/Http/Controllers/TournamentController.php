@@ -49,7 +49,7 @@ class TournamentController extends Controller
      *          description="Identificador del ganador",
      *          @OA\Schema(type="integer")
      *      ),
-     *      @OA\Response(response=200, description="Success")
+     *      @OA\Response(response=200, description="Success"),
      *      @OA\Response(response=404, description="Player not found")
      * )
      */

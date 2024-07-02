@@ -221,7 +221,7 @@ class PlayersController extends Controller
      *          required=true,
      *          @OA\Schema(type="integer")
      *      ),
-     *      @OA\Response(response=200,description="Success")
+     *      @OA\Response(response=200,description="Success"),
      *      @OA\Response(response=404, description="Player not found")
      * )
      */
@@ -289,7 +289,7 @@ class PlayersController extends Controller
      *          description="Nivel del jugador",
      *          @OA\Schema(type="integer")
      *      ),
-     *      @OA\Response(response=200,description="Success")
+     *      @OA\Response(response=200,description="Success"),
      *      @OA\Response(response=404, description="Player not found")
      * )
      */

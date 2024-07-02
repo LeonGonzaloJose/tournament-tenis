@@ -80,7 +80,7 @@
                 "tags": [
                     "players"
                 ],
-                "summary": "Obtiene un listado de jugadores",
+                "summary": "Crea un nuevo jugador",
                 "operationId": "player_store",
                 "parameters": [
                     {
@@ -243,6 +243,9 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "404": {
+                        "description": "Player not found"
                     }
                 },
                 "security": [
@@ -350,6 +353,136 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "404": {
+                        "description": "Player not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tournament": {
+            "get": {
+                "tags": [
+                    "tournaments"
+                ],
+                "summary": "Obtiene un listado de torneos",
+                "operationId": "tournament_index",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre del torneo",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sex",
+                        "in": "query",
+                        "description": "Sexo de los jugadores",
+                        "schema": {
+                            "description": "M = Masculino, F = Femenino",
+                            "type": "string",
+                            "enum": [
+                                "M",
+                                "F"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "winner_id",
+                        "in": "query",
+                        "description": "Identificador del ganador",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Player not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "tournaments"
+                ],
+                "summary": "Crea y ejecuta un torneo",
+                "operationId": "tournament_store",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre del torneo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sex",
+                        "in": "query",
+                        "description": "Sexualidad de los jugadores",
+                        "schema": {
+                            "description": "M = Masculino, F = Femenino",
+                            "type": "string",
+                            "enum": [
+                                "M",
+                                "F"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tournament/{id}": {
+            "get": {
+                "tags": [
+                    "tournaments"
+                ],
+                "summary": "Obtiene los datos de un torneo",
+                "operationId": "tournament_show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identificador del torneo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Player not found"
                     }
                 },
                 "security": [
