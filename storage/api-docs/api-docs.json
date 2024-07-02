@@ -1,0 +1,371 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API v1",
+        "description": "Details API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/players": {
+            "get": {
+                "tags": [
+                    "players"
+                ],
+                "summary": "Obtiene un listado de jugadores",
+                "operationId": "player_index",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre del jugador",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sex",
+                        "in": "query",
+                        "description": "Sexo del jugador",
+                        "schema": {
+                            "description": "M = Masculino, F = Femenino",
+                            "type": "string",
+                            "enum": [
+                                "M",
+                                "F"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "description": "Edad del jugador",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Estado del jugador",
+                        "schema": {
+                            "description": "A = Activo, I = Inactivo",
+                            "type": "string",
+                            "enum": [
+                                "A",
+                                "I"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "Nivel del jugador",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "players"
+                ],
+                "summary": "Obtiene un listado de jugadores",
+                "operationId": "player_store",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "description": "Edad del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "sex",
+                        "in": "query",
+                        "description": "Sexualidad del jugador",
+                        "schema": {
+                            "description": "M = Masculino, F = Femenino",
+                            "type": "string",
+                            "enum": [
+                                "M",
+                                "F"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "Nivel del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/players/{id}": {
+            "get": {
+                "tags": [
+                    "players"
+                ],
+                "summary": "Obtiene un jugador",
+                "operationId": "player_show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identificador del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Player not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "players"
+                ],
+                "summary": "Actualiza los datos de un jugador segun si ID",
+                "operationId": "player_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identificador del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sex",
+                        "in": "query",
+                        "description": "Sexualidad del jugador",
+                        "required": true,
+                        "schema": {
+                            "description": "M = Masculino, F = Femenino",
+                            "type": "string",
+                            "enum": [
+                                "M",
+                                "F"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "description": "Edad del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Estado del jugador",
+                        "required": true,
+                        "schema": {
+                            "description": "A = Activo, I = Inactivo",
+                            "type": "string",
+                            "enum": [
+                                "A",
+                                "I"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "Nivel del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "players"
+                ],
+                "summary": "Elimina a un jugador",
+                "operationId": "player_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identificador del jugador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/players/update/{id}": {
+            "patch": {
+                "tags": [
+                    "players"
+                ],
+                "summary": "Actualiza los datos de un jugador segun si ID",
+                "operationId": "player_update_partial",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identificador del jugador",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre del jugador",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sex",
+                        "in": "query",
+                        "description": "Sexualidad del jugador",
+                        "schema": {
+                            "description": "M = Masculino, F = Femenino",
+                            "type": "string",
+                            "enum": [
+                                "M",
+                                "F"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "description": "Edad del jugador",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Estado del jugador",
+                        "schema": {
+                            "description": "A = Activo, I = Inactivo",
+                            "type": "string",
+                            "enum": [
+                                "A",
+                                "I"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "Nivel del jugador",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
